@@ -3,9 +3,9 @@ package com.testng.api.sample;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class GetResponse {
+public class ExtractResponse {
 	
-	static String extractResponse(String json, String fieldResponse) {
+	static String getExtractResponse(String json, String fieldResponse) {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonResponseObject = new JSONObject();
 		Object obj = new Object();

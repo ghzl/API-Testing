@@ -64,16 +64,16 @@ public class PostMethod {
 		responseBody = request.getBody().toString();
 		System.out.println("Response Body ---> " +responseBody);
 
-		String name = GetResponse.extractResponse(responseBody, "name");
+		String name = ExtractResponse.getExtractResponse(responseBody, "name");
 		System.out.println("Name = "+name);
 		
-		String job = GetResponse.extractResponse(responseBody, "job");
+		String job = ExtractResponse.getExtractResponse(responseBody, "job");
 		System.out.println("Job = "+job);
 		
-		String id = GetResponse.extractResponse(responseBody, "id");
+		String id = ExtractResponse.getExtractResponse(responseBody, "id");
 		System.out.println("ID = "+id);
 		
-		String createdAt = GetResponse.extractResponse(responseBody, "createdAt");
+		String createdAt = ExtractResponse.getExtractResponse(responseBody, "createdAt");
 		System.out.println("Created At = "+createdAt);
 		
 		//check the response body
