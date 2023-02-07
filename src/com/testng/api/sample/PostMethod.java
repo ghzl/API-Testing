@@ -25,6 +25,7 @@ public class PostMethod {
 
 	//create response entity, stores http response code, response body, etc
 	private ResponseEntity<String> request;
+	
 	@BeforeTest
 	public void beforeTest() throws IOException, ParseException {
 		logger.info("Setting up prerequisite for test execution");
@@ -51,12 +52,11 @@ public class PostMethod {
 		String sendName = "Ghozali";
 		String sendJob = "QA";
 
-		
 		String jsonBody = "{\"name\" : \"" +sendName+ "\",\"job\":\"" +sendJob+ "\"}";
 
 		System.out.println("Request --> " + jsonBody);
 		
-		//POST Method to purchase mobile prepaid product
+		//POST Method to send user registration
 		HttpEntity<String> entity = new HttpEntity<String>(jsonBody, headers);
 		request = this.restTemplate.postForEntity(addURI, entity, String.class);
 		
@@ -79,7 +79,7 @@ public class PostMethod {
 		//check the response body
 		Assert.assertEquals(request.getStatusCode(), HttpStatus.CREATED); //expected to 201 - created
 		//Assert.assertEquals(GetResponse.extractResponse(responseBody, "message"), "Success"); //expected to Sukses
-		logger.info("POST succeded with id : " +id);	
+		logger.info("POST succeded with id : " +id);
 	}
 	
 
