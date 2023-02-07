@@ -48,12 +48,12 @@ public class PostMethod {
 		headers.add("Content-Type", "application/json");
 		
 		logger.info("Add URL: "+addURI);
-		String name = "00000024";
-		String job = "6017";
+		String sendName = "Ghozali";
+		String sendJob = "QA";
 
 		
-		String jsonBody = "{\"name\" : \"" +name+ "\", "\"job\" : \"" +job+  "\"}";
-		
+		String jsonBody = "{\"name\" : \"" +sendName+ "\",\"job\":\"" +sendJob+ "\"}";
+
 		System.out.println("Request --> " + jsonBody);
 		
 		//POST Method to purchase mobile prepaid product
@@ -64,19 +64,22 @@ public class PostMethod {
 		responseBody = request.getBody().toString();
 		System.out.println("Response Body ---> " +responseBody);
 
-		String code = GetResponse.extractResponse(responseBody, "code");
-		System.out.println("Code = "+code);
+		String name = GetResponse.extractResponse(responseBody, "name");
+		System.out.println("Name = "+name);
 		
-		String custRefNo = GetResponse.extractResponse(responseBody, "custRefNo");
-		System.out.println("CustRefNo = "+custRefNo);
+		String job = GetResponse.extractResponse(responseBody, "job");
+		System.out.println("Job = "+job);
 		
-		String message = GetResponse.extractResponse(responseBody, "message");
-		System.out.println("Message = "+message);
+		String id = GetResponse.extractResponse(responseBody, "id");
+		System.out.println("ID = "+id);
+		
+		String createdAt = GetResponse.extractResponse(responseBody, "createdAt");
+		System.out.println("Created At = "+createdAt);
 		
 		//check the response body
-		Assert.assertEquals(request.getStatusCode(), HttpStatus.OK);
-		Assert.assertEquals(GetResponse.extractResponse(responseBody, "message"), "Success"); //expected to Sukses
-		logger.info("Mobile Prepaid Purchase succeded with custRefNo : " +custRefNo);	
+		Assert.assertEquals(request.getStatusCode(), HttpStatus.CREATED); //expected to 201 - created
+		//Assert.assertEquals(GetResponse.extractResponse(responseBody, "message"), "Success"); //expected to Sukses
+		logger.info("POST succeded with id : " +id);	
 	}
 	
 

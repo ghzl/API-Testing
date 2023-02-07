@@ -16,23 +16,28 @@ public class GetResponse {
 			}
 		jsonResponseObject = (JSONObject) obj;
 		
-		String responseBG = jsonResponseObject.toString();
+		String responseAPI = jsonResponseObject.toString();
 		
-		String code = jsonResponseObject.get("code").toString();
+		String name = jsonResponseObject.get("name").toString();
 
-		String custRefNo = jsonResponseObject.get("custRefNo").toString();
+		String job = jsonResponseObject.get("job").toString();
 		
-		String message = jsonResponseObject.get("message").toString();
+		String id = jsonResponseObject.get("id").toString();
+		
+		String createdAt = jsonResponseObject.get("createdAt").toString();		
+		
 		
 		switch(fieldResponse) {
-			case "code": 
-				return code;
-			case "custRefNo": 
-				return custRefNo;
-			case "message": 
-				return message;
+			case "name": 
+				return name;
+			case "job": 
+				return job;
+			case "id": 
+				return id;
+			case "createdAt":
+				return createdAt;
 		}
-		return responseBG;	
+		return responseAPI;	
 	}
 	
 }
