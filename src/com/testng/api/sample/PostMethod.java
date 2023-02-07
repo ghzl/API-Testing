@@ -65,6 +65,7 @@ public class PostMethod {
 		System.out.println("Response Body ---> " +responseBody);
 
 		String name = ExtractResponse.getExtractResponse(responseBody, "name");
+		
 		System.out.println("Name = "+name);
 		
 		String job = ExtractResponse.getExtractResponse(responseBody, "job");
