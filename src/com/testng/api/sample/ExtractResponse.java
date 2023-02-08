@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class ExtractResponse {
+	private String putResponse;
 	
 	static String getExtractResponse(String json, String fieldResponse) {
 		JSONParser parser = new JSONParser();
@@ -24,9 +25,10 @@ public class ExtractResponse {
 		
 		String id = jsonResponseObject.get("id").toString();
 		
-		String createdAt = jsonResponseObject.get("createdAt").toString();		
+		String createdAt = jsonResponseObject.get("createdAt").toString();	
 		
-		
+		String updatedAt = jsonResponseObject.get("updateAt").toString();
+			
 		switch(fieldResponse) {
 			case "name": 
 				return name;
@@ -36,8 +38,40 @@ public class ExtractResponse {
 				return id;
 			case "createdAt":
 				return createdAt;
+			case "updatedAt":
+				return updatedAt;
 		}
 		return responseAPI;	
+	}
+	
+	static String getDetailPutResponse(String json, String putResponseField) {
+		JSONParser parser2 = new JSONParser();
+		JSONObject putResponseObject = new JSONObject();
+		Object obj2 = new Object();
+			try{
+				obj2 = parser2.parse(json);
+			}catch(org.json.simple.parser.ParseException e) {
+				e.printStackTrace();
+			}
+			
+		putResponseObject = (JSONObject) obj2;
+		String putResponse = putResponseObject.toString();
+		
+		String name = putResponseObject.get("name").toString();
+				
+		String job = putResponseObject.get("job").toString();
+		
+		String updatedAt = putResponseObject.get("updatedAt").toString();
+		
+		switch(putResponseField) {
+		case "name":
+			return name;
+		case "job":
+			return job;
+		case "updatedAt":
+			return updatedAt;
+		}
+		return putResponse;
 	}
 	
 }

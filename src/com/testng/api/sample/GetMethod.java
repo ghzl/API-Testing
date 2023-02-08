@@ -46,6 +46,8 @@ public class GetMethod {
 		
 		requestGet = this.restTemplate.getForEntity(getURI, String.class, entity);
 		
+		System.out.println("hit : " +requestGet);
+		
 		responseBody = requestGet.getBody().toString();
 		
 		System.out.println("Response GET Method : "+responseBody);

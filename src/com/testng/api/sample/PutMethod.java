@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -35,7 +36,7 @@ public class PutMethod {
 	@Test
 	public void putMethod() throws IOException, ParseException{
 		
-		String putURI = "http://reqres.in/api/users/"+this.id;
+		String putURI = "https://reqres.in/api/users/"+this.id;
 		logger.info("PUT URI : "+putURI);
 		System.out.println("PUT URI is : "+putURI);
 		
@@ -45,19 +46,31 @@ public class PutMethod {
 		headers.add("Content-Type", "application/json");
 		
 		//build json body
-		String name = "Ghozali";
-		String job = "QA Engineer";
-		String jsonBody = "{\"name\" : \"" +name+ "\",\"job\":\"" +job+ "\"}";
+		String sendName = "Ghozali";
+		String sendJob = "QA Engineer";
+		String jsonBody = "{\"name\" : \"" +sendName+ "\",\"job\":\"" +sendJob+ "\"}";
 		System.out.println("PUT Request --> " + jsonBody);
 		
 		//send PUT request
 		HttpEntity<String> entity = new HttpEntity<String>(jsonBody, headers);
+		System.out.println("Entity : " +entity);
 		
-		requestPut = this.restTemplate.put(putURI, entity);
+		requestPut = this.restTemplate.exchange(putURI, HttpMethod.PUT, entity, String.class);
+		System.out.println("Received PUT Response : "+requestPut);
 			
 		//get body response		
 		responseBody = requestPut.getBody().toString();
-		System.out.println("Response Body id : "+responseBody);
+		System.out.println("Response Body: "+responseBody);
+		
+		String name = ExtractResponse.getDetailPutResponse(responseBody, "name");
+		System.out.println("PUT Response : " +name);
+		
+		
+		String job = ExtractResponse.getDetailPutResponse(responseBody, "job");
+		System.out.println("Job : " +job);
+
+		String updatedAt = ExtractResponse.getDetailPutResponse(responseBody, "updatedAt");
+		System.out.println("Updated at : " +updatedAt);
 		
 		//assert response		
 		Assert.assertEquals(requestPut.getStatusCode(), HttpStatus.OK);	

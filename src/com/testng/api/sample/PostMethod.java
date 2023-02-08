@@ -17,7 +17,7 @@ import org.testng.log4testng.Logger;
 
 public class PostMethod {
 	private String responseBody;
-	public String responseBodyPost;
+	
 	final static Logger logger = Logger.getLogger(PostMethod.class);
 	
 	//resttemplate object
