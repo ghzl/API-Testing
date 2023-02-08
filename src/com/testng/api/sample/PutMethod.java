@@ -14,50 +14,61 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.log4testng.Logger;
 
-public class GetMethod {
+public class PutMethod {
 	
 	private String responseBody;
 	
-	final static Logger logger = Logger.getLogger(GetMethod.class);
+	final static Logger logger = Logger.getLogger(PutMethod.class);
 	
 	private String id = "2";
 	
-	private ResponseEntity<String> requestGet;
+	private RestTemplate restTemplate;
 	
-	private RestTemplate restTemplate; 
+	private ResponseEntity<String> requestPut;
 	
 	@BeforeTest
 	public void beforeTest() throws IOException, ParseException {
+		
 		this.restTemplate = new RestTemplate();
 	}
 	
 	@Test
-	public void getMethod() throws IOException, ParseException{
+	public void putMethod() throws IOException, ParseException{
 		
-		String getURI = "https://reqres.in/api/users?page="+this.id;
-		logger.info("Get URI : "+getURI);
-		System.out.println("String GET Method is : "+getURI);
+		String putURI = "http://reqres.in/api/users/"+this.id;
+		logger.info("PUT URI : "+putURI);
+		System.out.println("PUT URI is : "+putURI);
 		
+		//add http headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
 		headers.add("Content-Type", "application/json");
 		
-		HttpEntity<String> entity = new HttpEntity<String>(headers); 
+		//build json body
+		String name = "Ghozali";
+		String job = "QA Engineer";
+		String jsonBody = "{\"name\" : \"" +name+ "\",\"job\":\"" +job+ "\"}";
+		System.out.println("PUT Request --> " + jsonBody);
 		
-		requestGet = this.restTemplate.getForEntity(getURI, String.class, entity);
+		//send PUT request
+		HttpEntity<String> entity = new HttpEntity<String>(jsonBody, headers);
 		
-		responseBody = requestGet.getBody().toString();
+		requestPut = this.restTemplate.put(putURI, entity);
+			
+		//get body response		
+		responseBody = requestPut.getBody().toString();
+		System.out.println("Response Body id : "+responseBody);
 		
-		System.out.println("Response GET Method : "+responseBody);
-		
-		Assert.assertEquals(requestGet.getStatusCode(), HttpStatus.OK);	
+		//assert response		
+		Assert.assertEquals(requestPut.getStatusCode(), HttpStatus.OK);	
 	}
 	
 	@AfterTest
 	public void afterTest() {
 		logger.info("clean up after execution");
-		logger.info("creating restTemplate object as null");
+		logger.info("creating RestTemplate object as null");
 		this.restTemplate = new RestTemplate();
 	}
+	
 
 }
