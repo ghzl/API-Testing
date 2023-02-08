@@ -4,8 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class ExtractResponse {
-	private String putResponse;
-	
+
 	static String getExtractResponse(String json, String fieldResponse) {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonResponseObject = new JSONObject();
@@ -26,8 +25,6 @@ public class ExtractResponse {
 		String id = jsonResponseObject.get("id").toString();
 		
 		String createdAt = jsonResponseObject.get("createdAt").toString();	
-		
-		String updatedAt = jsonResponseObject.get("updateAt").toString();
 			
 		switch(fieldResponse) {
 			case "name": 
@@ -38,8 +35,7 @@ public class ExtractResponse {
 				return id;
 			case "createdAt":
 				return createdAt;
-			case "updatedAt":
-				return updatedAt;
+
 		}
 		return responseAPI;	
 	}

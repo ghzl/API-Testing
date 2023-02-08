@@ -62,9 +62,9 @@ public class PutMethod {
 		responseBody = requestPut.getBody().toString();
 		System.out.println("Response Body: "+responseBody);
 		
+		//get detailed field from body response
 		String name = ExtractResponse.getDetailPutResponse(responseBody, "name");
 		System.out.println("PUT Response : " +name);
-		
 		
 		String job = ExtractResponse.getDetailPutResponse(responseBody, "job");
 		System.out.println("Job : " +job);
