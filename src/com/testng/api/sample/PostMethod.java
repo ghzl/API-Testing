@@ -42,7 +42,7 @@ public class PostMethod {
      * @throws ParseException
      */
 	@Test
-	public void postMethod() throws IOException, ParseException{
+	public void hitPostMethod() throws IOException, ParseException{
 		String addURI = "https://reqres.in/api/users";
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");

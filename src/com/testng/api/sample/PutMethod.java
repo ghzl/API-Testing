@@ -46,9 +46,9 @@ public class PutMethod {
 		headers.add("Content-Type", "application/json");
 		
 		//build json body
-		String sendName = "Ghozali";
-		String sendJob = "QA Engineer";
-		String jsonBody = "{\"name\" : \"" +sendName+ "\",\"job\":\"" +sendJob+ "\"}";
+		String putName = "Ghozali";
+		String putJob = "QA Engineer";
+		String jsonBody = "{\"name\" : \"" +putName+ "\",\"job\":\"" +putJob+ "\"}";
 		System.out.println("PUT Request --> " + jsonBody);
 		
 		//send PUT request

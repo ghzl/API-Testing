@@ -32,7 +32,7 @@ public class GetMethod {
 	}
 	
 	@Test
-	public void getMethod() throws IOException, ParseException{
+	public void hitGetMethod() throws IOException, ParseException{
 		
 		String getURI = "https://reqres.in/api/users?page="+this.id;
 		logger.info("Get URI : "+getURI);

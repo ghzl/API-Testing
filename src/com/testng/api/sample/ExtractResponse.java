@@ -70,4 +70,32 @@ public class ExtractResponse {
 		return putResponse;
 	}
 	
+	static String getDetailPatchResonse(String json, String patchResponseField) {
+		JSONParser parser3 = new JSONParser();
+		JSONObject patchResponseObject = new JSONObject();
+		Object obj3 = new Object();
+			try {
+				obj3 = parser3.parse(json);
+			}catch(org.json.simple.parser.ParseException e) {
+				e.printStackTrace();
+			}
+		patchResponseObject = (JSONObject) obj3;
+		String patchResponse = patchResponseObject.toString();
+		
+		String patchName = patchResponseObject.get("name").toString();
+		
+		String patchJob = patchResponseObject.get("job").toString();
+		
+		String patchUpdatedAt = patchResponseObject.get("updatedAt").toString();
+		
+		switch(patchResponseField) {
+		case "name":
+			return patchName;
+		case "job":
+			return patchJob;
+		case "updatedAt":
+			return patchUpdatedAt;
+		}
+		return patchResponse;
+	}
 }
