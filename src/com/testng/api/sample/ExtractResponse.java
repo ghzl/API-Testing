@@ -98,4 +98,5 @@ public class ExtractResponse {
 		}
 		return patchResponse;
 	}
+	
 }
