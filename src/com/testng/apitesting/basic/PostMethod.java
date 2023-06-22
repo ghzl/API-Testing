@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -43,39 +43,44 @@ public class PostMethod {
      */
 	@Test
 	public void hitPostMethod() throws IOException, ParseException{
+		//set base url
 		String addURI = "https://reqres.in/api/users";
+		
+		//set http headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
 		headers.add("Content-Type", "application/json");
 		
 		logger.info("Add URL: "+addURI);
+		
+		//set json request param name and value
 		String sendName = "Ghozali";
 		String sendJob = "QA";
 
+		//build json request
 		String jsonBody = "{\"name\" : \"" +sendName+ "\",\"job\":\"" +sendJob+ "\"}";
-
-		System.out.println("Request --> " + jsonBody);
+		System.out.println("Request Body --> " +jsonBody);
 		
-		//POST Method to send user registration
+		//hit POST Method to send user registration
 		HttpEntity<String> entity = new HttpEntity<String>(jsonBody, headers);
 		request = this.restTemplate.postForEntity(addURI, entity, String.class);
 		
 		//get response body
 		responseBody = request.getBody().toString();
-		System.out.println("Response Body ---> " +responseBody);
+		System.out.println("Response Body --> " +responseBody);
 
+		//extract param from response
 		String name = ExtractResponse.getExtractResponse(responseBody, "name");
-		
-		System.out.println("Name = "+name);
+		System.out.println("Name = " +name);
 		
 		String job = ExtractResponse.getExtractResponse(responseBody, "job");
-		System.out.println("Job = "+job);
+		System.out.println("Job = " +job);
 		
 		String id = ExtractResponse.getExtractResponse(responseBody, "id");
-		System.out.println("ID = "+id);
+		System.out.println("ID = " +id);
 		
 		String createdAt = ExtractResponse.getExtractResponse(responseBody, "createdAt");
-		System.out.println("Created At = "+createdAt);
+		System.out.println("Created At = " +createdAt);
 		
 		//check the response body
 		Assert.assertEquals(request.getStatusCode(), HttpStatus.CREATED); //expected to 201 - created

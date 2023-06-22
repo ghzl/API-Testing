@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import java.io.IOException;
 
@@ -38,8 +38,8 @@ public class PatchMethod {
 		
 		//set PATCH method URI
 		String patchURI = "https://reqres.in/api/users/2";
-		logger.info("PATCH Method URI : "+patchURI);
-		System.out.println("PATCH Method URI : "+patchURI);
+		logger.info("PATCH Method URI : " +patchURI);
+		System.out.println("PATCH Method URI : " +patchURI);
 		
 		//add http header
 		HttpHeaders headers = new HttpHeaders();
@@ -60,17 +60,17 @@ public class PatchMethod {
 		
 		//get PATCH response
 		responseBody = requestPatch.getBody().toString();
-		System.out.println("Patch Response Received : "+responseBody);
+		System.out.println("Patch Response Received : " +responseBody);
 		
 		//get Detailed PATCH response
 		String patchResponseName = ExtractResponse.getDetailPatchResonse(responseBody, "name");
-		System.out.println("Name : "+patchResponseName);
+		System.out.println("Name : " +patchResponseName);
 		
 		String patchResponseJob = ExtractResponse.getDetailPatchResonse(responseBody, "job");
-		System.out.println("Job : "+patchResponseJob);
+		System.out.println("Job : " +patchResponseJob);
 		
 		String patchResponseUpdatedAt = ExtractResponse.getDetailPatchResonse(responseBody, "updatedAt");
-		System.out.println("Updated At : "+patchResponseUpdatedAt);	
+		System.out.println("Updated At : " +patchResponseUpdatedAt);	
 		
 		Assert.assertEquals(requestPatch.getStatusCodeValue(),HttpStatus.OK);
 		

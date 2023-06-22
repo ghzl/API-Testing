@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import java.io.IOException;
 

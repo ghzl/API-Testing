@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import java.io.IOException;
 
@@ -37,8 +37,8 @@ public class PutMethod {
 	public void putMethod() throws IOException, ParseException{
 		
 		String putURI = "https://reqres.in/api/users/"+this.id;
-		logger.info("PUT URI : "+putURI);
-		System.out.println("PUT URI is : "+putURI);
+		logger.info("PUT URI : " +putURI);
+		System.out.println("PUT URI is : " +putURI);
 		
 		//add http headers
 		HttpHeaders headers = new HttpHeaders();
@@ -49,18 +49,18 @@ public class PutMethod {
 		String putName = "Ghozali";
 		String putJob = "QA Engineer";
 		String jsonBody = "{\"name\" : \"" +putName+ "\",\"job\":\"" +putJob+ "\"}";
-		System.out.println("PUT Request --> " + jsonBody);
+		System.out.println("PUT Request --> " +jsonBody);
 		
 		//send PUT request
 		HttpEntity<String> entity = new HttpEntity<String>(jsonBody, headers);
 		System.out.println("Entity : " +entity);
 		
 		requestPut = this.restTemplate.exchange(putURI, HttpMethod.PUT, entity, String.class);
-		System.out.println("Received PUT Response : "+requestPut);
+		System.out.println("Received PUT Response : " +requestPut);
 			
 		//get body response		
 		responseBody = requestPut.getBody().toString();
-		System.out.println("Response Body: "+responseBody);
+		System.out.println("Response Body: " +responseBody);
 		
 		//get detailed field from body response
 		String name = ExtractResponse.getDetailPutResponse(responseBody, "name");

@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -9,11 +9,11 @@ public class ExtractResponse {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonResponseObject = new JSONObject();
 		Object obj = new Object();
-			try {
+		try {
 				obj = parser.parse(json);
 			} catch(org.json.simple.parser.ParseException e) {
 				e.printStackTrace();
-			}
+		}
 		jsonResponseObject = (JSONObject) obj;
 		
 		String responseAPI = jsonResponseObject.toString();

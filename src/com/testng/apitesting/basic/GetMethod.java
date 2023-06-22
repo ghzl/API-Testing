@@ -1,4 +1,4 @@
-package com.testng.api.sample;
+package com.testng.apitesting.basic;
 
 import java.io.IOException;
 
@@ -35,8 +35,8 @@ public class GetMethod {
 	public void hitGetMethod() throws IOException, ParseException{
 		
 		String getURI = "https://reqres.in/api/users?page="+this.id;
-		logger.info("Get URI : "+getURI);
-		System.out.println("String GET Method is : "+getURI);
+		logger.info("Get URI : " +getURI);
+		System.out.println("String GET Method is : " +getURI);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
