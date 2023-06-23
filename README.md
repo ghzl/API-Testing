@@ -76,10 +76,6 @@ This project generates test reports using the TestNG default report generator. Y
 
 Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please create a pull request or open an issue on the project's GitHub repository.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE.md).
-
 ## Acknowledgements
 
 - [TestNG](https://testng.org) - The testing framework used in this project.
