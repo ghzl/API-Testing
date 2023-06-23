@@ -32,15 +32,9 @@ Make sure you have the following software installed:
 3. Install project dependencies using Maven:
 
    ```
-   cd testng-api-testing
+   cd APITesting-TestNG
    mvn clean install
    ```
-
-4. Configure your API endpoints and test scenarios in the testng.xml file.
-
-5. Run the tests using the TestNG test runner.
-
-6. View the test results in the test reports generated under the "target/surefire-reports" directory.
 
 ## Writing Test Cases
 
@@ -51,26 +45,6 @@ To create a new API test case:
 2. Add test methods with `@Test` annotations.
 
 3. Use the provided HTTP utility classes to send API requests and validate responses.
-
-   ```java
-   import com.example.api.HttpClient;
-   import com.example.api.HttpRequest;
-   import com.example.api.HttpResponse;
-
-   // Send a GET request
-   HttpRequest request = new HttpRequest.Builder()
-       .url("https://api.example.com/users")
-       .method("GET")
-       .build();
-
-   HttpResponse response = HttpClient.sendRequest(request);
-
-   // Assert response status code
-   Assert.assertEquals(response.getStatusCode(), 200);
-
-   // Assert response body
-   Assert.assertTrue(response.getBody().contains("John Doe"));
-   ```
 
 4. Customize your test cases based on your API requirements, including handling authentication, sending request payloads, and verifying response data.
 
